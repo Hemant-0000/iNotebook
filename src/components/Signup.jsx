@@ -2,20 +2,20 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Signup = (props) => {
-  const [credentials, setCredentials] = useState({name: "", email: "", password: "", cpassword: "" })
+  const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cpassword: "" })
   let history = useNavigate();
 
   const host = "http://localhost:5000";
   const handleSubmit = async (e) => {
     e.preventDefault();
     // API Call
-    const {name, email, password} = credentials;
+    const { name, email, password } = credentials;
     const response = await fetch(`${host}/api/auth/createuser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({name, email, password })
+      body: JSON.stringify({ name, email, password })
     });
     const json = await response.json();
     console.log(json)
@@ -33,6 +33,7 @@ const Signup = (props) => {
   }
   return (
     <div className='container my-3'>
+      <h2>Create an account to use iNotebook</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name</label>

@@ -13,7 +13,7 @@ const NoteState = (props) => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIxYjBkYTllN2M0ZGE2OGM2YWNmN2FiIn0sImlhdCI6MTY0NTk0MDIwMH0.o9lc_azQNV7X4ZhTeqDBJ1vwXl9O__nkSdZOTE3CkCw'
+            'authtoken': localStorage.getItem('authtoken')
           }
         });
         const json = await response.json()
@@ -27,7 +27,7 @@ const NoteState = (props) => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIxYjBkYTllN2M0ZGE2OGM2YWNmN2FiIn0sImlhdCI6MTY0NTk0MDIwMH0.o9lc_azQNV7X4ZhTeqDBJ1vwXl9O__nkSdZOTE3CkCw'
+            'authtoken': localStorage.getItem('authtoken')
           },
           body: JSON.stringify({title, description, tag})
         });
@@ -44,9 +44,10 @@ const NoteState = (props) => {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
-            'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIxYjBkYTllN2M0ZGE2OGM2YWNmN2FiIn0sImlhdCI6MTY0NTk0MDIwMH0.o9lc_azQNV7X4ZhTeqDBJ1vwXl9O__nkSdZOTE3CkCw'
+            'authtoken': localStorage.getItem('authtoken')
           }
         });
+        // eslint-disable-next-line
         const json = await response.json();
     setNotes(newNotes)
   }
@@ -59,10 +60,11 @@ const NoteState = (props) => {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIxYjBkYTllN2M0ZGE2OGM2YWNmN2FiIn0sImlhdCI6MTY0NTk0MDIwMH0.o9lc_azQNV7X4ZhTeqDBJ1vwXl9O__nkSdZOTE3CkCw'
+          'authtoken': localStorage.getItem('authtoken')
         },
         body: JSON.stringify({title, description, tag})
       });
+       // eslint-disable-next-line
       const json = await response.json();
 
       let newNotes = JSON.parse(JSON.stringify(notes))
